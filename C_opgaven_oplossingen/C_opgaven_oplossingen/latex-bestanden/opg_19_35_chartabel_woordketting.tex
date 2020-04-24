@@ -1,0 +1,120 @@
+\beginoef
+In deze oefening lezen we een aantal (nl. 10) woorden in, en slaan deze op in \'e\'en lange array
+van karaktertekens. Het hoofdprogramma is deels gegeven  (haal eerst het latex-bestand af van Minerva, zodat je geen code hoeft over te tikken):
+
+\begin{verbatim}
+#include <stdio.h>
+#include <string.h>
+
+#define AANTAL_WOORDEN            10 
+#define GEMIDDELDE_LENGTE_WOORDEN  7
+#define TOTALE_LENGTE_ARRAY   ...   /*gebruik vorige constanten om dit te berekenen */
+
+int main(){
+    char* pt[AANTAL_WOORDEN+1];  /* zodat je ook nog een nullpointer kan toevoegen
+                                    op het einde van de pointertabel */
+    char t[TOTALE_LENGTE_ARRAY];
+	
+    pt[0] = t;
+	
+    printf("Geef %d woorden in:\n", AANTAL_WOORDEN);
+    lees(pt);     /* leest alle woorden in                  */
+    schrijf(pt);  /* schrijft alle woorden onder elkaar uit */
+	
+    return 0;
+}
+\end{verbatim}
+
+
+We kunnen toch aan alle woorden apart, als we (zie schets hieronder):
+\begin{enumerate}
+\item elk woord netjes afsluiten met een nullkarakter
+(dat zal automatisch gebeuren als we \verb}scanf(...)} juist gebruiken), {\bf EN}
+\item de start van elk woord onthouden door er een pointer naar te laten wijzen, {\bf EN}
+\item toegang hebben tot de onderste tabel uit de schets (toegang tot de bovenste tabel is dan niet meer nodig).
+\end{enumerate}
+\setlength{\unitlength}{9pt}
+\begin{picture}(38,12)(0,0)
+
+% de kleine vierkanten waarin je nootXmiesXofX.. steekt
+\put(6,8){\framebox(2,2){n}}
+\put(8,8){\framebox(2,2){o}}
+\put(10,8){\framebox(2,2){o}}
+\put(12,8){\framebox(2,2){t}}
+\put(14,8){\framebox(2,2){}}
+\put(16,8){\framebox(2,2){m}}
+\put(18,8){\framebox(2,2){i}}
+\put(20,8){\framebox(2,2){e}}
+\put(22,8){\framebox(2,2){s}}
+\put(24,8){\framebox(2,2){}}
+\put(26,8){\framebox(2,2){o}}
+\put(28,8){\framebox(2,2){f}}
+\put(30,8){\framebox(2,2){}}
+\put(32,8){\framebox(2,2){}}
+\put(34,8){\framebox(2,2){}}
+
+% de X-en in de  tussen "noot", "mies" en "of"
+\put(14,8){\line(1,1){2}}
+\put(16,8){\line(-1,1){2}}
+\put(24,8){\line(1,1){2}}
+\put(26,8){\line(-1,1){2}}
+\put(30,8){\line(1,1){2}}
+\put(32,8){\line(-1,1){2}}
+
+% de grote vierkanten waar je later pointers in tekent
+\multiput(5,0)(4,0){6}{\framebox(4,4){}}
+
+% de pointers in de bovenliggende grote vierkanten
+% de eerste gaat recht omhoog
+\put(7,2){\vector(0,1){6}}
+\put(7,2){\circle*{0.3}}
+% de tweede gaat schuin naar rechts
+\put(11,2){\vector(1,1){6}}
+\put(11,2){\circle*{0.3}}
+% de derde gaat nog schuiner naar rechts
+\put(15,2){\vector(2,1){12}}
+\put(15,2){\circle*{0.3}}
+
+% de X op het einde van de pointertabel
+\put(17,0){\line(1,1){4}}
+\put(21,0){\line(-1,1){4}}
+
+% opschrift bij dikke pijl
+\put(1,10){\makebox{   t}}
+\put(0,3){\makebox{   pt}}
+
+\linethickness{0.4mm}
+% dikke pijl naar char-tabel
+\put(1,9){\vector(1,0){5}}
+\put(1,9.1){\vector(1,0){5}}
+\put(1,9.2){\vector(1,0){5}}
+% dikke pijl naar char*-tabel
+\put(0,2){\vector(1,0){5}}
+\put(0,2.1){\vector(1,0){5}}
+\put(0,2.2){\vector(1,0){5}}
+%\put(21,7){\framebox(2,2){24}}
+
+\end{picture}
+
+Nog \'e\'en opmerking: de onderste tabel heeft als laatste element een nullpointer. 
+Dat zal ervoor zorgen dat de schrijfprocedure niet per se moet weten hoe lang de uit te schrijven (pointer)array is.
+
+Schrijf de procedures \verb|lees(...)| en \verb|schrijf(...)|.
+
+Ga voorlopig nog niet na of de gebruiker geen woorden opgeeft die te lang zijn.
+
+{\bf Extra}
+\\Er werd nog niet expliciet nagegaan of de gebruiker geen woorden opgeeft die te lang zijn. 
+Dit kan je op twee manieren inbouwen.
+\begin{enumerate}
+\item Leg bij elk woord dat je inleest dezelfde beperking op; lees bijvoorbeeld niet meer dan \verb}GEMIDDELDE_LENGTE_WOORDEN} in.
+\item Leg bij elk woord dat je inleest een variabele beperking op; namelijk het aantal elementen dat nog vrij is in de array met lettertekens.
+\end{enumerate}
+De eerste optie heeft het nadeel dat je allicht veel 'overschot' (niet-gebruikte elementen) hebt in de array t. De tweede optie heeft het nadeel
+dat de gebruiker als eerste woord een heel lang woord kan ingeven - waarna er geen plaats meer is voor de volgende. Pas de oefening daarom als volgt aan, gebruik makend van de 
+tweede manier om in te lezen:
+
+Schrijf een programma dat woorden inleest, tot de gegeven array \verb}t} van lengte \verb}LENGTE_ARRAY_T} vol is (het max aantal worden ligt dus niet vast). Laat de gebruiker telkens weten
+hoe lang het op te geven woord maximaal mag zijn. Geeft de gebruiker een woord op waardoor de tabel overvol raakt, 
+dan zorg je ervoor dat enkel het eerste deel van dat woord bewaard wordt.
+\endoef

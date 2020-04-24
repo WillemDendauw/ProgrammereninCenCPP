@@ -1,0 +1,24 @@
+\beginoef
+\begin{enumerate}
+\item 
+Schrijf een functie \verb}lees()} die een lijn (bestaande uit 1 of meerdere woorden) inleest vanop het klavier, en een nieuwe C-string teruggeeft. 
+Je weet niet hoe lang de tekst is, maar na oproep van de functie neemt de C-string niet meer geheugenplaats in dan strikt noodzakelijk. 
+Indien de tekst langer is dan 1000 karaktertekens, breek je het af na het 1000$^e$ teken en kuis je de resterende tekst op. Test dit uit door de constante 1000 aan te passen - uiteraard.
+\\Zorg er ook voor dat op het einde van de resulterende C-string geen newline-karakter staat.
+\item
+Test je functie uit in het onderstaande (half-afgewerkte) hoofdprogramma (haal eerst het latex-bestand af van Minerva, zodat je geen code hoeft over te tikken). 
+\\Vervolledig het hoofdprogramma met 1 regel code.
+\end{enumerate}
+\begin{verbatim}
+int main(){
+    int i;
+    for(i=0; i<5; i++){    
+        char * tekst = lees();
+        printf("Ik las in %s.\n",tekst);
+    }	
+    return 0;
+}
+\end{verbatim}
+
+\endoef
+

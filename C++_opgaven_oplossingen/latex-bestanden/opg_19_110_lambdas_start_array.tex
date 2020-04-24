@@ -1,0 +1,36 @@
+
+\beginoef
+In oefening 25 werd een functie als parameter doorgegeven voor een andere functie of procedure. In C (en C++) moet je die functie eerst expliciet een naam geven en implementeren.
+
+In C++11 kan het in \'e\'en moeite: met $\lambda$-functies maak je de functie 'on-the-fly' aan.
+
+Pas onderstaand hoofdprogramma aan: 
+\begin{itemize}
+\item schrijf de procedure \verb}schrijf}.
+\item schrijf de procedure \verb}vul_array}. .
+\\Let op, het type van de vierde parameter is nu geen functiepointer, want je werkt in C++11/14 in plaats van C!
+\item vervolledig de aanroep van de methode \verb}vul_array}: vervang \verb}......} door een  $\lambda$-functie. 
+
+\end{itemize}
+\begin{footnotesize}
+\begin{verbatim}
+int main(){
+     const int GROOTTE = 10;
+     int a[] = {0,1,2,3,4,5,6,7,8,9};
+     int b[] = {0,10,20,30,40,50,60,70,80,90};
+     int c[GROOTTE];
+          
+     vul_array(a,b,c,GROOTTE,........);
+     schrijf("SOM:      ",c,GROOTTE);
+
+     vul_array(a,b,c,GROOTTE,........);
+     schrijf("PRODUCT:  ",c,GROOTTE);
+
+     vul_array(a,b,c,GROOTTE,........);
+     schrijf("VERSCHIL: ",c,GROOTTE);
+     
+     return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+\endoef

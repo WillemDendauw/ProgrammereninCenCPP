@@ -1,0 +1,67 @@
+\beginoef
+Schrijf een functie \verb}regel_uit_bestand(bestand,volgnr)} die uit een gegeven bestand de regel tekst haalt 
+die het gegeven volgnummer draagt. 
+Deze functie gooit een exceptie van type \verb}string} indien het bestand niet geopend kon worden,
+een exceptie van type \verb}c-string} als het bestand niet start met het woord \verb}VERHAAL}, en een exceptie van eigen makelij (type \verb}bestand_niet_lang_genoeg}) als het bestand niet lang genoeg is.
+(Afspraak: de regel met het woord \verb}VERHAAL} heeft regelnummer 0.)
+
+Daarna pas je het hoofdprogramma dat hieronder gegeven is aan.
+Eerst worden alle gevraagde (en gevonden) regels onder elkaar uitgeschreven.
+Daaronder komt een lijst van alle bestanden die niet geopend konden worden,
+gevolgd door een lijst van alle bestanden die te kort waren.
+Tenslotte komen de eerste woorden uit de bestanden die niet begonnen met het woord \verb}VERHAAL} - die vormen op zich weer een stukje tekst.
+\begin{footnotesize}
+\begin{verbatim}
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main(){     
+     
+    vector<string> bestandsnamen{"niks","een","twee","drie","vier",
+                     "vijf","zes","zeven","acht","negen","tien","elf","twaalf"};
+    vector<int> nrs{8,5,2,10,7,3,8,4,1,1,6,2,4};
+     
+    string bestanden_niet_gevonden = "";
+    string bestanden_niet_lang_genoeg = "";
+    string eerste_woorden = "";
+     
+    for(int i=0; i<bestandsnamen.size(); i++){
+        cout << regel_uit_bestand(bestandsnamen[i]+".txt",nrs[i]) << endl;
+    }
+     
+    cout<<endl<<endl<<"BESTANDEN NIET GEVONDEN:"<<endl;
+    cout<<bestanden_niet_gevonden;
+    cout<<endl<<"BESTANDEN NIET LANG GENOEG:"<<endl;
+    cout<<bestanden_niet_lang_genoeg<<endl;
+    cout<<endl<<"BESTANDEN ZONDER STARTWOORD 'VERHAAL':"<<endl;
+    cout<<"dit waren de woorden die er wel als eerste stonden:"<<endl<<endl;
+    cout<<eerste_woorden<<endl<<endl;
+     
+    return 0;   
+}
+\end{verbatim}
+\end{footnotesize}
+Het eindresultaat zal er dan als volgt uit zien:
+\begin{footnotesize}
+\begin{verbatim}
+... (tekstje)
+
+BESTANDEN NIET GEVONDEN:
+vier.txt kon niet geopend worden
+zes.txt kon niet geopend worden
+
+BESTANDEN NIET LANG GENOEG:
+drie.txt heeft geen 10 regels.
+
+BESTANDEN ZONDER STARTWOORD 'VERHAAL':
+dit waren de woorden die er wel als eerste stonden:
+
+... (tekstje)
+\end{verbatim}
+\end{footnotesize}
+
+
+\endoef

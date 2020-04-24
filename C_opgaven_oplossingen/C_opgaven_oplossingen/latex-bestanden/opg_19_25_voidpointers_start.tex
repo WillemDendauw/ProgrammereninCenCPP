@@ -1,0 +1,66 @@
+\beginoef
+Gegeven onderstaand hoofdprogramma  (haal eerst het latex-bestand af van Minerva, zodat je geen code hoeft over te tikken) , en de functies \verb}som}, \verb}product} en \verb}verschil}.
+Je ziet dat de derde tabel wordt ingevuld aan de hand van de twee eerste tabellen. Afhankelijk van de 
+laatste parameter van de procedure \verb}vul_tabel}, bevat de derde tabel de som, respectievelijk product of verschil van de overeenkomstige elementen
+uit de eerste twee tabellen.
+\begin{footnotesize}
+\begin{minipage}[t]{9cm}
+\begin{verbatim}
+#include <stdio.h>
+#define AANTAL 5
+int som(int a, int b){
+    return a+b;
+}
+int product(int a, int b){
+    return a*b;
+}
+int verschil(int a, int b){
+    return a-b;
+}
+void schrijf(const int * t, int aantal){	
+    int i;
+    for(i=0; i<aantal; i++){
+        printf("%i ",t[i]);
+    }
+    printf("\n");
+}
+\end{verbatim}
+\end{minipage}
+\begin{minipage}[t]{8cm}
+\begin{verbatim}
+int main(){
+    int a[AANTAL];
+    int b[AANTAL];
+    int c[AANTAL];
+    int i;
+    for(i=0; i<AANTAL; i++){
+        a[i] = 10*i;
+        b[i] = i;
+    }
+	
+    vul_tabel(a,b,c,AANTAL,som);
+    schrijf(c,AANTAL);
+	
+    vul_tabel(a,b,c,AANTAL,product);
+    schrijf(c,AANTAL);
+	
+    vul_tabel(a,b,c,AANTAL,verschil);
+    schrijf(c,AANTAL);
+    return 0;
+}
+\end{verbatim}
+\end{minipage}
+\end{footnotesize} Als output zal er dus verschijnen:
+\begin{verbatim}
+0 11 22 33 44
+0 10 40 90 160 
+0 9 18 27 36 
+\end{verbatim}
+Schrijf de procedure \verb}vul_tabel(...)}. De laatste parameter is een functie. 
+Definieer de procedure \verb}vul_tabel} n\'a je \verb}main}-functie. Dan moet je \verb}vul_tabel}
+vooraf declareren. Laat in die parameterlijst de benamingen van de parameters zelf weg, schrijf enkel de types neer.
+
+%Merk op: in deze oefening hebben we nog geen void-pointers nodig. De reden? Elke functie (\verb}som}, \verb}product}, \verb}verschil}) heeft hetzelfde
+%returntype \'en neemt ook telkens twee parameters van hetzelfde type. Dus is er geen behoefte om deze types hier te vervangen door een overkoepelend type \verb}void*}.
+\endoef
+

@@ -1,0 +1,59 @@
+\beginoef
+Werk voort op voorgaande oefening. Het hoofprogramma wordt nu:
+\vspace{-3mm}
+\begin{footnotesize}
+\begin{verbatim}
+int main(){
+    srand(time(NULL));	
+    knoop * m = maak_gesorteerde_lijst_automatisch(10,1000);
+    knoop * n = maak_gesorteerde_lijst_automatisch(5,1000);
+    printf("\nLIJST m:\n");    print_lijst(m);
+    printf("\nLIJST n:\n");    print_lijst(n);
+    printf("\nDeze worden gemerged. \n\n");
+    
+    knoop * mn = merge(...,...);	
+	
+    printf("\nLIJST m:   \n");	print_lijst(m);
+    printf("\nLIJST n:   \n");	print_lijst(n);
+    printf("\nRESULTAAT: \n");	print_lijst(mn);	
+    ....   /* aan te vullen */
+    return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+Schrijf de functie \verb}merge} die twee gerangschikte lijsten als parameter neemt. Beide lijsten zullen op het einde leeg zijn; hun knopen zitten allemaal in de nieuwe (eveneens gerangschikte) 
+lijst die teruggegeven wordt. Omdat de lijsten die je meegeeft gerangschikt moeten zijn (precondities van de functie), kan je de lijsten effici\"ent samenvoegen.
+Neem hiervoor onderstaande code, die hetzelfde doet voor twee array's \verb{a{ en \verb{b{ als voorbeeld.
+%\newpage
+\begin{footnotesize}
+\begin{verbatim}
+int * merge(const int * a, const int * b, int size_a, int size_b){	
+    int i = 0; /* indexeert a */
+    int j = 0; /* indexeert b */
+    int k = 0; /* indexeert c */	
+    int size_c = size_a + size_b;
+    int * c = (int*)malloc(size_c * sizeof(int));
+	
+    while(i < size_a && j < size_b){
+        if( a[i] < b[j] ){
+            c[k++] = a[i++]; 	
+       }
+       else{
+            c[k++] = b[j++];	
+       }
+    }
+
+    while(i < size_a){
+        c[k++] = a[i++];	
+    }
+
+    while(j < size_b){
+       c[k++] = b[j++];	
+    }
+
+    return c;
+}
+\end{verbatim}
+\end{footnotesize}
+	
+\endoef

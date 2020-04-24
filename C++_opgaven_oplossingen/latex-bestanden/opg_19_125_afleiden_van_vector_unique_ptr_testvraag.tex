@@ -1,0 +1,56 @@
+\beginoef
+Gegeven onderstaande klassendeclaratie en hoofdprogramma. 
+\begin{footnotesize}
+\begin{verbatim}
+#include <memory>
+#include <vector>
+#include <iostream>
+using namespace std;
+
+class Langeslang : public vector<unique_ptr<int>>{
+    private:		
+        void schrijf(ostream&)const;
+    public:
+        void vul(const vector<int>& v);
+        Langeslang& concatenate(Langeslang & c);
+		
+    friend ostream& operator<<(ostream& out, const Langeslang& l){
+        l.schrijf(out);
+        return out;	
+    }	
+};
+
+int main(){
+    Langeslang a;
+    Langeslang b;
+    Langeslang c;
+    a.vul({1,2});      // via a vind je de getallen 1 en 2
+    b.vul({3,4,5});    // via b vind je de getallen 3, 4 en 5
+    c.vul({6,7});      // via c vind je de getallen 6 en 7
+    cout<<"a: "<<a<<endl<<"b: "<<b<<endl<<"c: "<<c<<endl<<endl;
+	
+    a.concatenate(a);	
+    // via a vind je nu de 4 getallen 1, 2, 1 en 2
+		
+    cout<<"na a.concatenate(a)"<<endl;
+    cout<<"a: "<<a<<endl<<"b: "<<b<<endl<<"c: "<<c<<endl<<endl;
+	
+    a.concatenate(b).concatenate(c);
+    // via a vind je nu de 9 getallen 1, 2, 1, 2, 3, 4, 5, 6 en 7
+    // b is leeg
+    // c is leeg
+    
+    cout<<"na a.concatenate(b).concatenate(c)"<<endl;
+    cout<<"a: "<<a<<endl<<"b: "<<b<<endl<<"c: "<<c<<endl<<endl;
+    return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+
+Implementeer de lidfuncties \verb}schrijf}, \verb}vul} en \verb}concatenate} (outline). 
+(Gelukt? Geef jezelf een pluim (of meer); implementatie van \verb}concatenate} was een testvraag uit vorige jaargangen.)
+
+Als extra, na het afwerken van de laatste oefening uit deze reeks: wat gebeurt er als je van de klasse 
+\verb}Langeslang} een template-klasse maakt? Pas aan en test uit met types \verb}double} en \verb}string}.
+
+\endoef

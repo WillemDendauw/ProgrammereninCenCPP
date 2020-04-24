@@ -1,0 +1,136 @@
+\beginoef
+Vul de klassen \verb}Rechthoek}, \verb}GekleurdeRechthoek}, \verb}Vierkant} en \verb}GekleurdVierkant} aan.
+Gebruik overerving waar het kan: een \verb}GekleurdVierkant} erft zowel van \verb}GekleurdeRechthoek} als van \verb}Vierkant}.
+Zorg dat het hoofdprogramma werkt en EXACT de gegeven output oplevert: kijk goed na, het venijn zit 'm in de details!
+\begin{footnotesize}
+\begin{verbatim}
+#include <iostream>
+using namespace std;
+
+class Rechthoek {
+ public:
+   Rechthoek();
+   Rechthoek(int, int);
+   ...
+   // attributen voorzien voor hoogte en breedte
+   // (type int)
+};
+
+// afgeleid van Rechthoek; pas aan in hoofding
+class GekleurdeRechthoek {
+ public:
+   ...
+   // enkel extra attribuut voor kleur
+};
+
+// afgeleid van Rechthoek; pas aan in hoofding
+class Vierkant {
+    ...
+    // geen extra attributen voorzien!
+};
+
+// afgeleid van GekleurdRechthoek en Vierkant; pas aan in hoofding
+class GekleurdVierkant {
+    ...
+    // geen extra attributen voorzien!
+};
+
+int main () {
+   Rechthoek r1;
+   r1.print(cout);
+   cout << "  oppervlakte: " << r1.oppervlakte() << endl
+        << "  omtrek: " << r1.omtrek() << endl;
+        
+   Rechthoek r2(4,6);
+   cout << r2;
+   cout << "  oppervlakte: " << r2.oppervlakte() << endl
+        << "  omtrek: " << r2.omtrek() << endl;
+        
+   GekleurdeRechthoek gr1;
+   gr1.print(cout);
+   cout << "  oppervlakte: " << gr1.oppervlakte() << endl
+        << "  omtrek: " << gr1.omtrek() << endl;
+        
+   GekleurdeRechthoek gr2(5,7);
+   cout << gr2;
+   cout << "  oppervlakte: " << gr2.oppervlakte() << endl
+        << "  omtrek: " << gr2.omtrek() << endl;
+        
+   GekleurdeRechthoek gr3(6,9,"rood");
+   gr3.print(cout);
+   cout << "  oppervlakte: " << gr3.oppervlakte() << endl
+        << "  omtrek: " << gr3.omtrek() << endl; 
+		
+   Vierkant v1;
+   cout << v1;
+   cout << "  oppervlakte: " << v1.oppervlakte() << endl
+        << "  omtrek: " << v1.omtrek() << endl;
+        
+   Vierkant v2(10);
+   v2.print(cout);
+   cout << "  oppervlakte: " << v2.oppervlakte() << endl
+        << "  omtrek: " << v2.omtrek() << endl; 
+		
+   GekleurdVierkant gv1;
+   cout << gv1;   
+   cout << "  oppervlakte: " << ...
+        << "  omtrek: " << ...
+        
+   GekleurdVierkant gv2(12);
+   gv2.print(cout);
+   cout << "  oppervlakte: " << ...
+        << "  omtrek: " << ...
+        
+   GekleurdVierkant gv3(15,"geel");
+   cout << gv3;
+   cout << "  oppervlakte: " << ...
+        << "  omtrek: " << ... 
+   return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+De gevraagde output is:
+\begin{footnotesize}
+\begin{verbatim}
+Rechthoek: 1 op 1
+  oppervlakte: 1
+  omtrek: 4
+Rechthoek: 6 op 4
+  oppervlakte: 24
+  omtrek: 20
+Rechthoek: 1 op 1
+  kleur: onbekend
+  oppervlakte: 1
+  omtrek: 4
+Rechthoek: 7 op 5
+  kleur: onbekend
+  oppervlakte: 35
+  omtrek: 24
+Rechthoek: 9 op 6
+  kleur: rood
+  oppervlakte: 54
+  omtrek: 30
+Vierkant: zijde 1
+  oppervlakte: 1
+  omtrek: 4
+Vierkant: zijde 10
+  oppervlakte: 100
+  omtrek: 40
+Vierkant: zijde 1
+  kleur: onbekend
+  oppervlakte: 1
+  omtrek: 4
+Vierkant: zijde 12
+  kleur: onbekend
+  oppervlakte: 144
+  omtrek: 48
+Vierkant: zijde 15
+  kleur: geel
+  oppervlakte: 225
+  omtrek: 60
+\end{verbatim}
+\end{footnotesize}
+Merk op: de implementatie van de klassen moet zo beknopt mogelijk zijn,
+dus maak optimaal gebruik van overerving en overschrijf enkel de methodes die echt nodig zijn.
+\endoef
+

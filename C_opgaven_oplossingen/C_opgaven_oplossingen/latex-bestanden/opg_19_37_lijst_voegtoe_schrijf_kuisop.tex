@@ -1,0 +1,28 @@
+\beginoef
+\begin{footnotesize}
+\begin{verbatim}
+typedef struct knoop knoop; /* zie vorige opgave */
+int main(){
+    knoop * l = 0;
+    voeg_vooraan_toe(7, ... );
+    voeg_vooraan_toe(3, ... );
+    print_lijst( ... );
+    return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+Schrijf de nodige procedures, opdat bovenstaand hoofdprogramma zou werken. Op de puntjes geef je de gelinkte lijst \verb}l} mee. Denk na over de manier waarop je dat doet.
+\begin{enumerate}
+%\setcounter{enumi}{3}
+\item 
+De procedure \verb}voeg_vooraan_toe} breidt de gegeven gelinkte lijst (tweede parameter) uit met \'e\'en knoop: die komt vooraan, en bevat het gegeven getal (eerste parameter).
+\item
+De procedure \verb}print_lijst} implementeer je eerst niet-recursief.
+\item
+Implementeer de procedure \verb}print_lijst} daarna recursief. 
+\item 
+Er ontbreekt een procedure aan het hoofdprogramma. Schrijf hoofding, implementatie en aanroep van deze procedure.
+\end{enumerate}
+
+
+\endoef

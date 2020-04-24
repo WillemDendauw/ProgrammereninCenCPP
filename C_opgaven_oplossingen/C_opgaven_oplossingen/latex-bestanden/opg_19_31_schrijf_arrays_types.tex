@@ -1,0 +1,38 @@
+\beginoef
+Intialiseer in het hoofdprogramma volgende arrays:
+\begin{footnotesize}
+\begin{verbatim}
+    char * namen[] = {"Evi","Jaro","Timen","Youri","Ashaf","Jennifer"};
+    int leeftijden[] = {21,30,18,14,22,19};
+    double scores[] = {0.5,1.6,8.2,-2.4};
+\end{verbatim}
+\end{footnotesize}
+
+We willen de elementen van deze arrays uitschrijven, gescheiden door een leesteken naar keuze. Omdat de arrays elk van een ander type zijn, zouden we drie keer bijna dezelfde code moeten schrijven: een lus om de elementen van een array te overlopen en die uit te schrijven. 
+
+Dat dubbel werk kunnen we vermijden. Ga daarvoor als volgt te werk:
+\begin{enumerate}
+\item Schrijf drie procedures \verb}schrijf_cstring}, \verb}schrijf_int} en \verb}schrijf_double} die alledrie \'e\'en parameter van een pointertype meekrijgen en \'e\'en element uitschrijven. 
+Test uit.
+\item Schrijf de procedure 
+\begin{verbatim}
+void schrijf_array(const void * t, int aantal, int grootte, char tussenteken,
+                   void (*schrijf)(const void*))
+\end{verbatim}
+die de eerste \verb}aantal} elementen uit de array \verb}t} uitschrijft. Elk koppel elementen wordt gescheiden door het opgegeven \verb}tussenteken}. 
+De parameter \verb}grootte} bevat de grootte van het type dat uitgeschreven moet worden. De parameter \verb}schrijf} is een pointer naar een passende uitschrijfprocedure.
+\end{enumerate}
+\item Schrijf een hoofdprogramma dat volgende output produceert:
+\begin{footnotesize}
+\begin{verbatim}
+21,30,18,14,22,19
+
+Evi;Jaro;Timen;Youri;Ashaf;Jennifer
+
+0.5~1.6~8.2~-2.4
+\end{verbatim}
+\end{footnotesize}
+{\bf Belangrijke voetnoot met het oog op de labotest.} Zorg dat je deze oefening helemaal binnenste buiten draait en jezelf grondig bevraagt over het hoe en waarom van welke parametertypes, sterretjes, haakjes,... Een dergelijke vraag komt dikwijls op testen voor, waarbij je soms ook zelf de hoofding van de procedure moet schrijven.
+
+\endoef
+

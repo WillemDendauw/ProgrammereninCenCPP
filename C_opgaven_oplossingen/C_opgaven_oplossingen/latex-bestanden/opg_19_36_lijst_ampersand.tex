@@ -1,0 +1,36 @@
+\beginoef
+\begin{footnotesize}
+\begin{verbatim}
+typedef struct knoop knoop;
+struct knoop{
+    int d;
+    knoop * opv;   
+};
+
+int main(){
+    knoop * l = 0;
+    knoop * k = l;
+    k = (knoop*) malloc(sizeof(knoop));   
+    return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+
+%\begin{enumerate}
+%\item 
+Teken de twee pointers \verb}l} en \verb}k}, en wat er precies gebeurt in bovenstaande code. 
+Is \verb}l} gewijzigd? 
+%
+%Probeer \verb}l->d} een waarde toe te kennen, en dit uit te schrijven. Krijg je compiler-/runtime-waarschuwingen?
+%\item
+%{\bf TIP} De code 
+%$$\fbox{ptr1 = ptr2}$$ 
+%lees je als 
+%$$\fbox{ptr1 wijst naar dezelfde plek als ptr2 wijst}$$
+%\item
+%Nu willen we de pointer \verb}l} wijzigen, maar via een hulppointer (we willen de pointer \verb}l} dus niet bij naam noemen).
+%Probeer eens met de declaratie \verb}struct knoop ** m}. Geef de initialisatie van \verb}m}, en gebruik \verb}m} om aan \verb}l} geheugen
+%toe te kennen.
+%\end{enumerate}
+
+\endoef

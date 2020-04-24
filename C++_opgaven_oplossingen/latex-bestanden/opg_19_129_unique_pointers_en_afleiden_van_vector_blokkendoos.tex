@@ -1,0 +1,69 @@
+\beginoef
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=0.2\linewidth]{blokkendoos.jpg}
+%\end{figure}
+
+Gegeven een blokkendoos waarin je figuren kan steken zoals in een vector, met \'e\'en verschil: de grootste van deze figuren (wat oppervlakte betreft) 
+zal altijd apart bewaard worden. Vraag je de grootste figuur van de blokkendoos, dan verdwijnt die ook effectief uit de doos.
+
+Om zeker te zijn elke figuur maar 1 keer worden toegekend gebruik je \verb{unique pointer{.
+
+Download de bestanden \verb{figuren.h{ en \verb{figuren.txt{ van Minerva.
+
+Bekijk grondig de interface van de klasse \verb{Figuur{ en de inhoud van het bestand \verb{figuren.txt{.
+Bekijk daar het gegeven hoofdprogramma. Probeer eerst zonder de tips te voorspellen wat je
+moet implementeren. Pas daarna lees je verder wat onder de code verklapt wordt.
+
+\begin{footnotesize}
+\begin{verbatim}
+#include "figuren.h"
+#include <memory>
+
+class Blokkendoos : vector<unique_ptr<Figuur>>{
+  private:
+    unique_ptr<Figuur> max_opp;
+    void schrijf(ostream&)const;
+  public:
+    Blokkendoos();
+    Blokkendoos(const string & bestandsnaam);
+    unique_ptr<Figuur> geef_figuur_met_grootste_oppervlakte();	
+    void push_back(unique_ptr<Figuur>& figuur);
+	
+    friend ostream& operator<<(ostream& out, const Blokkendoos& l){
+        l.schrijf(out);
+        return out;	
+    }	
+};
+
+int main(){
+    Blokkendoos blokkendoos("figuren.txt"); 
+    cout<<endl<<"ALLE FIGUREN: ";
+    cout<<blokkendoos<<endl;
+	
+    cout<<endl<<"DE 3 GROOTSTE, van groot naar klein: "<<endl;
+    for(int i=0; i<3; i++){
+        cout<<"figuur met grootste opp:    "<<*blokkendoos.geef_figuur_met_grootste_oppervlakte()<<endl;
+    }
+
+    cout<<endl<<"DE NIEUWE BLOKKENDOOS BEVAT ALLEEN NOG DE KLEINERE FIGUREN: ";
+    cout<<blokkendoos<<endl;
+	
+	
+    return 0;	
+}
+
+\end{verbatim}
+\end{footnotesize}
+\newpage
+{\bf Tips}
+
+\begin{enumerate}
+\item Bij het toevoegen van een figuur \verb}fig} aan de blokkendoos (\verb}push_back}) maak je onderscheid tussen twee gevallen. Indien de grootste figuur nog
+niet gekend is (dan is de vector dus zeker nog leeg), initialiseer je deze grootste figuur met de figuur \verb}fig}. In het andere geval
+voeg je de nieuwe figuur achteraan de vector toe. Indien die echter (qua oppervlakte) groter blijkt te zijn dan \verb}max_opp}, dan wissel je beide.
+\item De methode die de grootste figuur teruggeeft, moet er ook voor zorgen dat de blokkendoos een nieuwe grootste figuur aanduidt uit de voorraad die nog in de vector zit.
+Pas de grootte van de vector ook aan!
+\end{enumerate}
+\endoef
+

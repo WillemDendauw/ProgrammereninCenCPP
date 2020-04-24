@@ -1,0 +1,28 @@
+\beginoef
+
+Schrijf een hoofdprogramma waarin je alvast volgende code schrijft:
+\begin{verbatim}
+	double getallen[5] = {5.5,7.7,2.2,9.9,9.8};
+	string woorden[3] = {"geloof","hoop","de liefde"};		
+	cout << grootste(getallen,5) << endl;
+	cout << "De grootste van de drie is " << grootste(woorden,3) << "." << endl;
+\end{verbatim}
+
+\begin{enumerate}
+\item Schrijf een functie \verb}grootste(array,lengte)} die uit een gegeven array van gegeven lengte het grootste element teruggeeft.
+Het type van de elementen die in de array bewaard worden, is niet gekend. 
+\\{\bf Tip:} Voeg een functie \verb}grootte(elt)} toe. Deze functie bepaalt de grootte van een element, en moet ge\"\i mplementeerd worden voor elk type waarvoor je de functie \verb}grootste} oproept. De grootte van een woord wordt gedefinieerd als de lengte van het woord.
+
+{\bf Opmerking}: 
+\\De functie \verb}grootte(...)} wordt {\bf niet meegeven} aan de functie \verb}grootste(...,...)}: we vragen hier dus geen functiepointers. 
+
+\item Maak in het hoofdprogramma een array van drie personen aan. Elke persoon is van type Persoon (definieer zelf de struct), 
+en onthoudt zowel zijn naam (een \verb{string{) als zijn leeftijd (een \verb{int{) en lengte (in meter, dus een \verb{double{).
+
+\item Schrijf een procedure \verb}initialiseer(persoon,naam,leeftijd,lengte)} die de dataleden van een gegeven persoon initialiseert.
+Gebruik deze procedure om de drie personen in de array te initialiseren ( vb. Samuel is 12 jaar, lengte is 1m52 / Jente is 22 jaar, lengte is 1m81 / Idris is 42 jaar, lengte 1m73).
+\item Schrijf een procedure \verb}print(persoon)} die de gegevens van een persoon uitschrijft op het scherm. (Test uit door een van de personen uit de array uit te schrijven.)
+\item Schrijf tenslotte in het hoofdprogramma, de grootste persoon uit, als de grootte van een persoon bepaald wordt door zijn leeftijd.
+(Nadien pas je de code aan zodat de grootte van een persoon bepaald wordt door zijn/haar lengte respectievelijk de lengte van zijn/haar naam. Krijg je het verwachte resultaat?)
+\end{enumerate}
+\endoef

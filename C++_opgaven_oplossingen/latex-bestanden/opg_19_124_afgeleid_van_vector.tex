@@ -1,0 +1,53 @@
+\beginoef
+Gegeven een hoofdprogramma. Schrijf de klasse \verb}mijn_vector} die afgeleid is van de klasse \verb}vector}. Zorg dat de output is zoals aangegeven.
+Een paar verklarende noten:
+\begin{enumerate}
+\item Voor elk type \verb}T} moet je een object van type \verb}mijn_vector<T>} kunnen aanmaken.
+\item Een object van type \verb}mijn_vector<T>} kent dezelfde lidfuncties als de klasse \verb}vector<T>} - uiteraard.
+\item Daarbovenop zal een object van de klasse \verb}mijn_vector<T>} zichzelf kunnen verdubbelen. Kijk goed naar de output van het programma
+om te beslissen hoe het verdubbelen in zijn werk gaat: \verb}[3,4,5]} kan \verb}[3,3,4,4,5,5]} dan wel \verb}[6,8,10]} worden.
+\item Een tip: om het i-de element van de vector aan te spreken, kan je niet gewoon \verb}[i]} schrijven; \verb}(*this)[i]} of \verb}operator[](i)} kan wel.
+\end{enumerate}
+\begin{footnotesize}
+\begin{verbatim}
+int main(){	
+    mijn_vector<int> v{10,20,30};  
+    cout << v;
+
+    v.verdubbel();              
+    cout<<endl<<"na verdubbelen zonder parameter: " << v;	
+    v.verdubbel(true);          
+    cout<<endl<<"na verdubbelen met param true:   " << v;
+
+    mijn_vector<int> w(v);      
+    cout<<endl<<"een kopie van v: " << w;	
+
+    mijn_vector<double> u(7);   
+    cout<<endl<<"een vector met 7 default-elt: " << u;        
+    for(int i=0; i<u.size(); i++){
+        u[i] = i*1.1;
+    }
+    cout<<endl<<"na opvullen met getallen: " << u;
+
+    u.verdubbel();              
+    cout<<endl<<"na verdubbelen zonder parameter: " << u;            
+   
+    return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+
+De output wordt (op een paar witlijnen na):
+\begin{footnotesize}
+\begin{verbatim}
+[ 10 - 20 - 30 ]
+na verdubbelen zonder parameter:   [ 20 - 40 - 60 ]
+na verdubbelen met param true:     [ 20 - 20 - 40 - 40 - 60 - 60 ]
+een kopie van v:                   [ 20 - 20 - 40 - 40 - 60 - 60 ]
+een vector met 7 default-elt:      [ 0 - 0 - 0 - 0 - 0 - 0 - 0 ]
+na opvullen met getallen:          [ 0 - 1.1 - 2.2 - 3.3 - 4.4 - 5.5 - 6.6 ]
+na verdubbelen zonder parameter:   [ 0 - 2.2 - 4.4 - 6.6 - 8.8 - 11 - 13.2 ]
+\end{verbatim}
+\end{footnotesize}
+\endoef
+\vspace{-0.5cm}

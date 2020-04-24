@@ -1,0 +1,47 @@
+\beginoef
+Vul het  onderstaande hoofdprogramma aan met lambdafuncties en implementeer de lidfunctie \verb}geef_extremum} van de klasse \verb}Groep}.
+
+\begin{footnotesize}
+\begin{verbatim}
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class Persoon{
+    public:
+       string voornaam;
+       string naam;
+       int leeftijd;
+       Persoon(const string & v, const string & n, int l):voornaam(v),naam(n),leeftijd(l){}
+};	
+
+ostream& operator<<(ostream & out, const Persoon & p){
+    out<<p.naam <<" "<<p.voornaam<<" ("<<p.leeftijd<<")";
+    return out;
+}
+
+
+class Groep : public vector<Persoon>{
+    public:
+        // Hier komt de declaratie van de lidfunctie 'geef_extremum',
+        // die een Persoon teruggeeft.
+        // Deze lidfunctie krijgt als parameter een functie mee die twee 
+        // objecten van de klasse Persoon vergelijkt. 
+};
+
+int main(){
+    Groep gr;
+    gr.push_back(Persoon("Ann","Nelissen",12));
+    gr.push_back(Persoon("Bert","Mertens",22));
+    gr.push_back(Persoon("Celle","Lauwers",55));
+	
+    cout<<"Eerste qua naam:     " << gr.geef_extremum(.......);	
+    cout<<"Eerste qua voornaam: " << gr.geef_extremum(.......);
+    cout<<"Jongste:             " << gr.geef_extremum(.......);
+    cout<<"Oudste:              " << gr.geef_extremum(.......);
+    return 0;	
+}
+\end{verbatim}
+\end{footnotesize}
+\endoef

@@ -1,0 +1,24 @@
+\beginoef
+\begin{footnotesize}
+\begin{verbatim}
+int main(){
+    srand(time(NULL));
+    knoop * l = maak_gesorteerde_lijst_automatisch(10,100);
+    print_lijst(l);
+    printf("\nnu worden dubbels verwijderd: \n");
+    verwijder_dubbels(...); /* aan te vullen */
+    printf("\nna verwijderen van dubbels: \n\n");
+    print_lijst(l);	
+    ... /* aan te vullen */
+    return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+In bovenstaand hoofdprogramma wordt er automatisch een stijgend gesorteerde lijst aangemaakt, waar dubbele elementen in kunnen zitten. Implementeer de functie
+\\\verb}maak_gesorteerde_lijst_automatisch(aantal,bovengrens)}. De eerste parameter geeft aan hoe\-veel elementen de lijst moet bevatten. De tweede parameter geeft
+aan wat het grootste getal zal zijn. Een tip: bouw de lijst op door vooraan telkens een iets kleiner getal dan het vorige toe te voegen. Daarvoor genereer je
+een getal uit de verzameling $\{0,1,2\}$ met de functie \verb}rand()} uit \verb}stdlib.h} en trek je dit getal af van het vorige toegevoegde getal (of van het getal \verb{bovengrens{ bij het toevoegen van de eerste knoop).
+
+Schrijf de procedure \verb}verwijder_dubbels(...)} die alle dubbels uit de gelinkte lijst verwijdert. Als enige parameter
+geef je de gelinkte lijst mee. Vul het hoofdprogramma verder aan zoals het hoort.
+\endoef

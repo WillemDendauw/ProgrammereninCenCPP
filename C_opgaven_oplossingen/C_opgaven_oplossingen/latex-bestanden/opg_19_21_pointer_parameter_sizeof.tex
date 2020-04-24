@@ -1,0 +1,32 @@
+        
+\beginoef
+Dit is een vervolg op oefening 13. Gegeven onderstaand  hoofdprogramma (haal eerst het latex-bestand af van Minerva, zodat je geen code hoeft over te tikken). 
+\begin{verbatim}
+#include <stdio.h>
+int main(){
+	
+    char letters [] = {'p','o','r','g','o','e','d','o','i','e','o','k',
+                       'i',':','a','-','t','('};
+    const char *p = letters; 
+
+    schrijf_aantal(letters+3,4);
+    printf("\n");
+    schrijf(p+10,p+12);
+    
+} 
+\end{verbatim} 
+
+\begin{enumerate}
+\item Kan je de lengte van de array opvragen via de pointer \verb{p{?
+\\Ga na dat de geheugenruimte, ingenomen door een pointer altijd gelijk is (onafhankelijk van het type waarnaar de pointer verwijst).
+
+\item Schrijf de procedure \verb}schrijf_aantal} die het aantal gevraagde letters uitschrijft vanaf de pointer opgegeven in de eerste parameter.
+
+\item Schrijf de procedure \verb}schrijf(begin,eind)} die de letters uitschrijft die te vinden zijn tussen de plaats waar de pointers \verb}begin} en \verb}eind} naar wijzen. (Laatste grens niet inbegrepen; je mag er vanuit gaan dat beide pointers wijzen naar elementen in dezelfde array van karakters, en dat \verb}begin < eind} .)
+
+\end{enumerate}
+\endoef
+
+
+
+	

@@ -1,0 +1,66 @@
+\beginoef
+Hieronder de procedure \verb}voeg_getal_toe} die een knoop toevoegt aan een lijst die stijgend geordend is en moet blijven.
+\begin{footnotesize}
+\begin{verbatim}
+void voeg_getal_toe(int g, knoop **l) {
+   knoop *h, *m;
+   if (*l == 0 || g <= (*l)->getal) {
+      h = (knoop*) malloc(sizeof(knoop));
+      h->getal = g; h->opv = *l; *l = h;
+   }
+   else {
+      h = *l;
+      while (h->opv != 0 && h->opv->getal < g)
+         h = h->opv;
+      m = h->opv;
+      h->opv = (knoop*) malloc(sizeof(knoop));
+      h = h->opv; h->getal = g; h->opv = m;
+   }
+}
+\end{verbatim}
+\end{footnotesize}
+Je ziet dat er een opsplitsing nodig is in deelgevallen: een stuk code dat van toepassing is indien het toevoegen vooraan in de lijst gebeurt, en een stuk
+code dat alle andere gevallen behandelt. Dit dubbele werk willen we vermijden. Het is immers werk gespaard als je code kan schrijven die in elke
+situatie bruikbaar is. 
+
+De hulppointer \verb}h} werd gedeclareerd als \verb}knoop *} en duidt de knoop aan waar de nieuwe knoop aangehangen zal worden. Op tekening:
+
+
+
+\setlength{\unitlength}{6pt}
+\begin{picture}(70,18)(0,0)
+
+% knopen
+\multiput(20,10)(20,0){3}{\oval(12,12)}
+% opvolger-pointers
+\multiput(20,8)(20,0){3}{\vector(1,0){14}}
+\multiput(20,8)(20,0){3}{\circle*{0.5}}
+\multiput(20,6)(20,0){3}{\makebox{ opv}}
+% kruis voor nullpointer
+\put(73,9){\line(1,-1){2}}
+\put(73,7){\line(1,1){2}}
+% sleutels
+\multiput(20,12)(20,0){3}{\makebox{ d}}
+\put(18,12){\framebox(2,2){3}}
+\put(38,12){\framebox(2,2){7}}
+\put(58,12){\framebox(2,2){9}}
+% startpointer
+\put(4,10){\vector(1,0){10}}
+\put(4,10){\circle*{0.5}}
+\put(4,8){\makebox{ l}}
+
+\end{picture}
+
+
+Als we het getal 4 willen toevoegen, zal \verb}h} naar de eerste knoop wijzen. Als we het getal 10 toevoegen, zal \verb}h} naar de laatste knoop wijzen. Als we het getal
+2 willen toevoegen, zal \verb}h} geen knoop hebben om naar te wijzen. (Vandaar de opsplitsing in gevallen in de code.)
+
+Het valt echter op te merken dat je enkel \verb}h->opv} nodig hebt in de code. De inhoud van de knoop waar \verb}h} naar wijst (\verb}h->d}) heb je niet nodig. Waarom dan naar de hele knoop 
+(zowel \verb}h->d} als \verb}h->opv}) wijzen? Is toegang tot \verb}h->opv} niet voldoende? Dat is de oplossing voor ons probleem: we laten een hulppointer \verb}k} wijzen naar de horizontale pijlen 
+(de links tussen de knopen). Willen we 4 toevoegen, dan wijst \verb}k} naar de tweede horizontale pijl. Willen we 10 toevoegen, dan wijst \verb}k} naar de laatste horizontale pijl. 
+Willen we 2 toevoegen, dan wijst \verb}k} naar de eerste horizontale pijl. En het behandelen van een speciaal geval is niet meer nodig!
+
+Herschrijf de procedure \verb}voeg_getal_toe(getal,lijst)} die een knoop met inhoud \verb}getal} toe\-voegt aan een lijst die ondersteld
+wordt stijgend geordend te zijn (en te blijven). Dubbels zijn toegelaten. Gebruik g\'e\'en \verb{if-else{ -structuur.
+
+\endoef

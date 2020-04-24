@@ -1,0 +1,36 @@
+\beginoef
+%
+Gegeven onderstaand hoofdprogramma  (haal eerst het latex-bestand af van Minerva, zodat je geen code hoeft over te tikken). Schrijf de nodige code om dit te laten werken; gebruik overal {\bf verplicht schuivende pointers}. De procedure \verb}schrijf(begin,eind)} werd al gevraagd in oefening 21.
+
+
+\begin{enumerate}
+%Marleen : volgorde omgewisseld - laatste zin aangepast.
+\item de functie \verb}pointerNaarEersteKleineLetter(p)} geeft een pointer terug naar de eerste kleine letter die te vinden is vanaf de huidige positie van de pointer \verb}p}.
+Indien er geen kleine letters meer volgen, staat \verb}p} op het einde van de c-string (=voorbij de laatste letter).
+
+\item de procedure \verb}verzetNaarEersteHoofdletter(p)} verzet de gegeven pointer \verb}p} zodat hij wijst naar de eerste hoofdletter die vanaf zijn huidige positie te vinden is.
+(Ook hier: voorzie de situatie waarbij er geen hoofdletters meer volgen.)
+
+\end{enumerate}
+\begin{footnotesize}
+\begin{verbatim}
+int main(){	
+    const char zus1[50] = "sneeuwWITje";
+    const char zus2[50] = "rozeROOD";                                        
+    const char* begin;
+    const char* eind;	   
+    begin = zus1;
+    verzetNaarEersteHoofdletter(&begin);	
+    eind = pointerNaarEersteKleineLetter(begin);		
+    schrijf(begin,eind);   /* schrijft 'WIT' uit */
+    printf("\n");	    
+    begin = zus2;
+    verzetNaarEersteHoofdletter(&begin);
+    eind = pointerNaarEersteKleineLetter(begin);	
+    schrijf(begin,eind);   /* schrijft 'ROOD' uit */	
+    return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+\endoef
+

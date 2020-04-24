@@ -1,0 +1,32 @@
+\beginoef
+Ga verder met de vorige oefening (122).  Vervang het hoofdprogramma door deze code:
+\begin{footnotesize}
+\begin{verbatim}
+int main () {   
+
+   Rechthoek r2(4,6); 
+   GekleurdeRechthoek gr1; 
+   GekleurdeRechthoek gr3(6,9,"rood"); 
+   Vierkant v2(10);
+
+   vector<Rechthoek> v; 
+   v.push_back(r2); 
+   v.push_back(gr1); 
+   v.push_back(gr3); 
+   v.push_back(v2);
+
+   for(int i=0 ; i<v.size() ; i++) { 
+       cout << v[i]; 
+       cout << " oppervlakte: " << v[i].oppervlakte() << endl 
+            << " omtrek: " << v[i].omtrek() << endl; 
+   }
+     
+   return 0;
+}          
+\end{verbatim} 
+\end{footnotesize}
+De output van dit programma is niet helemaal wat we willen: er is enkel sprake van rechthoeken; de kleuren worden niet uitgeschreven en het vierkant wordt ook niet alsdusdanig herkend.
+Pas de code aan, zodat dit wel gebeurt.
+
+
+\endoef

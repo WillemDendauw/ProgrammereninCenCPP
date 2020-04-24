@@ -1,0 +1,59 @@
+\beginoef
+
+Gegeven onderstaande code.
+\begin{footnotesize}
+\begin{verbatim}
+#include <memory>
+#include <iostream>
+using namespace std;
+
+void schrijf(const string * s, int aantal){
+    cout<<endl;
+    for(int i=0; i<aantal-1; i++){
+        cout<<s[i]<<" - ";
+    }
+    cout<<s[aantal-1];
+}
+
+void verwijder(string * s, int aantal, int volgnr){
+   for(int i = volgnr; i < aantal-1; i++){
+       s[i] = s[i+1];	
+   }  
+   s[aantal-1] = "";  //laatste element leeg maken
+}
+
+int main(){
+	
+    string namen[]={"Rein","Ada","Eppo" , "Pascal" , "Ilse"};
+	
+    schrijf(namen,5);
+    verwijder(namen,5,1);
+    schrijf(namen,5); //alle namen tonen
+	
+    return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+Test uit wat het programma doet. Het laatste element is leeg, maar wordt nog steeds getoond (dat is de bedoeling!).
+
+{\bf Probleem:} De code \verb}s[i] = s[i+1];} zal de string {\bf kopi\"eren}.
+Dat moeten we vermijden, want een string kan in principe heel groot zijn. 
+
+{\bf Opdracht:} Schrijf twee nieuwe procedures, die bij het onderstaande hoofdprogramma horen.
+We bewaren nu (unique) pointers in de array, zodat we bij het opschuiven van de elementen in de array
+enkel pointers moeten verleggen, en geen kopie\"en maken.
+\begin{footnotesize}
+\begin{verbatim}
+int main(){
+    unique_ptr<string> pnamen[]={...}; //vul zelf deze array aan met 5 unieke pointers
+    schrijf(pnamen,5);
+    verwijder(pnamen,5,1);
+    schrijf(pnamen,5);
+	
+    return 0;
+}
+\end{verbatim}
+\end{footnotesize}
+Probeer ook eens het laatste element uit de array te ``verwijderen''!
+
+\endoef
